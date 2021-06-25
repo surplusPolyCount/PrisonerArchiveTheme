@@ -134,7 +134,6 @@ function fill_date_meta_box_content($post){
 	$currentDateValue = get_the_terms($post->ID, 'date_sent')[0];
 	?>
 	<p class='meta-options hcf_field'>
-	<?php echo $currentDateValue->name;?> 
 	<label for="dat_sent_<?php echo $currentDateValue->term_id;?>">Date Sent</label>
 		<input id='date_sent_ <?php echo $currentDateValue->term_id?>' 
 		       type='date' 
@@ -154,7 +153,8 @@ add_action( 'save_post', 'date_save_meta_box' );
 /*TAXONOMY FOR WHETHER OR NOT WANTS PENPAL */
 function create_penpal_taxonomy() {
 	$labels = array(
-	    'name' => 'Wants Penepal',
+	    'name' => 'Wants Penpal',
+		'add_new_item' => '',
 	);
 	register_taxonomy(
 		'wants_penpal',
@@ -202,7 +202,6 @@ function fill_penpal_meta_box_content( $post ) {
 	// We assume that there is a single category
 	$currentTaxonomyValue = get_the_terms($post->ID, 'wants_penpal')[0];
 ?>
-	<p>Choose taxonomy value</p>
 	<p>
 		<?php foreach($terms as $term): ?>
 			<input type="radio"
@@ -374,7 +373,7 @@ function build_wp_custom_attachment() {
     $html .= '</p>';
     $html .= '<input type="file" id="wp_custom_attachment" name="wp_custom_attachment" value="" size="25" />';
     if($img)
-		$html .= '<p><button><a href="'.$img['url'].'">Have file submitted. Click here for the file</a></button></p> ';
+		$html .= '<p><button><a href="'.$img['url'].'">File is submitted. Click here to view</a></button></p> ';
     echo $html;
  
 } // end build_wp_custom_attachment
