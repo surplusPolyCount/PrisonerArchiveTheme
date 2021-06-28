@@ -454,3 +454,6 @@ function post_address($desired_post_id, $taxname){
 	return $res; 
 }
 
+function pdf_button($desired_post_id){
+	
+}
