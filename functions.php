@@ -53,7 +53,7 @@ function create_author_taxonomy() {
 		'add_new_item' => 'Add New Author',
 	);
 	register_taxonomy(
-		'Authors',
+		'authors',
 		'prisoner_submission',
 		array(
 			'label' => 'Author',
@@ -68,32 +68,39 @@ function create_author_taxonomy() {
 	);
 }
 add_action('init', 'create_author_taxonomy');
+
+add_action('add_meta_boxes', 'add_authors_meta_box');
+function add_authors_meta_box(){
+	add_meta_box( 'authors', __('Author of Submission'), 'fill_authors_meta_box', 'prisoner_submission' ,'normal');
+}
+
+function fill_authors_meta_box(){
+	$currentAuthorValue = get_the_terms($post->ID, 'authors')[0];
+	?>
+	<p class='meta-options hcf_field'>
+	<label for="author_from_<?php echo $currentAuthorValue->term_id;?>">Author of Submission</label>
+		<input id='author_from_ <?php echo $currentAuthorValue->term_id?>' 
+		       type='text' 
+			   name='authors'
+			   value="<?php echo $currentAuthorValue->name;?>">
+	</p>
+<?php
+}
+
+//save user input
+function authors_save_meta_box( $post_id ) {
+	if ( isset( $_REQUEST['authors'] ) ) 
+		wp_set_object_terms($post_id, $_POST['authors'], 'authors');
+}
+add_action( 'save_post', 'authors_save_meta_box' );
+
+
+
 //https://www.google.com/search?client=firefox-b-1-d&q=create+custom+metabox+for+taxonomy
 ?>
 <?php 
 /* SUBMISSION TYPE */
-function create_submission_taxonomy() {
-	$labels = array(
-	    'name' => 'Submission Types',
-	    'singular_name' => 'Submission Type',
-		'add_new_item' => 'Add New Submission Type',
-	);
-	register_taxonomy(
-		'submission_type',
-		'prisoner_submission',
-		array(
-			'label' => 'Sumbission Type',
-			'labels' => $labels,
-			'hierarchical' => false,			
-			'public' => true,
-			'show_ui' => true,
-			'show_admin_column' => true,
-			'meta_box_cb' => true,
-			'show_in_rest' => true,
-		)
-	);
-}
-add_action('init', 'create_submission_taxonomy');
+//lol tb added
 
 function create_date_taxonomy() {
 	$labels = array(
@@ -249,7 +256,6 @@ add_action('init', 'create_address_taxonomy');
 
 
 
-//https://www.toptal.com/wordpress/wordpress-taxonomy-tutorial
 // CREATE CUSTOM TAXONOMY
 
 //called to create new metabox
@@ -434,4 +440,17 @@ function save_custom_meta_data($id) {
 add_action('save_post', 'save_custom_meta_data');
 
 
+//Some succulent get functions 
+
+//get string from tax category 
+
+function post_address($desired_post_id, $taxname){
+	$res = ""; 
+    $pulled_address_tax = get_the_terms($desired_post_id, $taxname)[0];
+    $address_terms = parse_address_from_taxonomy($pulled_address_tax);  
+    foreach ($address_terms as $term){
+		$res .= $term; 
+	}
+	return $res; 
+}
 
