@@ -53,7 +53,7 @@ function create_author_taxonomy() {
 		'add_new_item' => 'Add New Author',
 	);
 	register_taxonomy(
-		'Authors',
+		'authors',
 		'prisoner_submission',
 		array(
 			'label' => 'Author',
@@ -68,32 +68,39 @@ function create_author_taxonomy() {
 	);
 }
 add_action('init', 'create_author_taxonomy');
+
+add_action('add_meta_boxes', 'add_authors_meta_box');
+function add_authors_meta_box(){
+	add_meta_box( 'authors', __('Author of Submission'), 'fill_authors_meta_box', 'prisoner_submission' ,'normal');
+}
+
+function fill_authors_meta_box(){
+	$currentAuthorValue = get_the_terms($post->ID, 'authors')[0];
+	?>
+	<p class='meta-options hcf_field'>
+	<label for="author_from_<?php echo $currentAuthorValue->term_id;?>">Author of Submission</label>
+		<input id='author_from_ <?php echo $currentAuthorValue->term_id?>' 
+		       type='text' 
+			   name='authors'
+			   value="<?php echo $currentAuthorValue->name;?>">
+	</p>
+<?php
+}
+
+//save user input
+function authors_save_meta_box( $post_id ) {
+	if ( isset( $_REQUEST['authors'] ) ) 
+		wp_set_object_terms($post_id, $_POST['authors'], 'authors');
+}
+add_action( 'save_post', 'authors_save_meta_box' );
+
+
+
 //https://www.google.com/search?client=firefox-b-1-d&q=create+custom+metabox+for+taxonomy
 ?>
 <?php 
 /* SUBMISSION TYPE */
-function create_submission_taxonomy() {
-	$labels = array(
-	    'name' => 'Submission Types',
-	    'singular_name' => 'Submission Type',
-		'add_new_item' => 'Add New Submission Type',
-	);
-	register_taxonomy(
-		'submission_type',
-		'prisoner_submission',
-		array(
-			'label' => 'Sumbission Type',
-			'labels' => $labels,
-			'hierarchical' => false,			
-			'public' => true,
-			'show_ui' => true,
-			'show_admin_column' => true,
-			'meta_box_cb' => true,
-			'show_in_rest' => true,
-		)
-	);
-}
-add_action('init', 'create_submission_taxonomy');
+//lol tb added
 
 function create_date_taxonomy() {
 	$labels = array(
@@ -249,7 +256,6 @@ add_action('init', 'create_address_taxonomy');
 
 
 
-//https://www.toptal.com/wordpress/wordpress-taxonomy-tutorial
 // CREATE CUSTOM TAXONOMY
 
 //called to create new metabox
@@ -434,4 +440,40 @@ function save_custom_meta_data($id) {
 add_action('save_post', 'save_custom_meta_data');
 
 
+//Some succulent get functions for unique data types
 
+//return name of author as string
+function get_sub_author($desired_post_id){
+	return get_the_terms( $desired_post_id, 'authors')[0]->name;
+}
+
+//return date as string
+function get_sub_date($desired_post_id){
+	return get_the_terms( $desired_post_id, 'date_sent')[0]->name;
+}
+
+//return 'yes' or 'no' as string depending on whether or not prisoner 
+//wanted penpal
+function get_sub_penpal($desired_post_id){
+	return get_the_terms( $desired_post_id, 'wants_penpal')[0]->name;
+}
+
+//return dictionary of strings each term representing part of an address. 
+//(did not know ideal way to format, so leaving this up to you to customize, 
+//might want to build an additional funciton for it?)
+function get_sub_address($desired_post_id){
+    $pulled_address_tax = get_the_terms($desired_post_id, 'address')[0];
+    $address_terms = parse_address_from_taxonomy($pulled_address_tax);  
+	$address_dict = array(
+		'street' => $address_terms[0],
+		'city' => $address_terms[1],
+		'state' => $address_terms[2],
+		'zip' => $address_terms[3],
+	);
+	return $address_dict; 
+}
+
+//return url to pdf submitted with post as string
+function get_sub_pdflink($desired_post_id){
+	return get_post_meta($desired_post_id, 'wp_custom_attachment', true)['url'];
+}
