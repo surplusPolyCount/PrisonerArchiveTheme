@@ -440,20 +440,40 @@ function save_custom_meta_data($id) {
 add_action('save_post', 'save_custom_meta_data');
 
 
-//Some succulent get functions 
+//Some succulent get functions for unique data types
 
-//get string from tax category 
-
-function post_address($desired_post_id, $taxname){
-	$res = ""; 
-    $pulled_address_tax = get_the_terms($desired_post_id, $taxname)[0];
-    $address_terms = parse_address_from_taxonomy($pulled_address_tax);  
-    foreach ($address_terms as $term){
-		$res .= $term; 
-	}
-	return $res; 
+//return name of author as string
+function get_sub_author($desired_post_id){
+	return get_the_terms( $desired_post_id, 'authors')[0]->name;
 }
 
-function pdf_button($desired_post_id){
-	
+//return date as string
+function get_sub_date($desired_post_id){
+	return get_the_terms( $desired_post_id, 'date_sent')[0]->name;
+}
+
+//return 'yes' or 'no' as string depending on whether or not prisoner 
+//wanted penpal
+function get_sub_penpal($desired_post_id){
+	return get_the_terms( $desired_post_id, 'wants_penpal')[0]->name;
+}
+
+//return dictionary of strings each term representing part of an address. 
+//(did not know ideal way to format, so leaving this up to you to customize, 
+//might want to build an additional funciton for it?)
+function get_sub_address($desired_post_id){
+    $pulled_address_tax = get_the_terms($desired_post_id, 'address')[0];
+    $address_terms = parse_address_from_taxonomy($pulled_address_tax);  
+	$address_dict = array(
+		'street' => $address_terms[0],
+		'city' => $address_terms[1],
+		'state' => $address_terms[2],
+		'zip' => $address_terms[3],
+	);
+	return $address_dict; 
+}
+
+//return url to pdf submitted with post as string
+function get_sub_pdflink($desired_post_id){
+	return get_post_meta($desired_post_id, 'wp_custom_attachment', true)['url'];
 }
