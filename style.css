@@ -78,6 +78,26 @@ cite {
     color: black;
 }
 
+.card-background-main {
+    background-color: #c9ada7;
+}
+
+.card-background-secondary {
+    background-color: #F2e9e4;
+}
+
+.card-background-tertiary {
+    background-color: #fff4e6;
+}
+
+.card-text-main {
+    color: #141442;
+}
+
+.card-text-secondary {
+    color: #22223b;
+}
+
 .no-hover {
     cursor: pointer;
 }
@@ -184,6 +204,7 @@ cite {
     color: #777;
     text-decoration: none;
 }
+
 
 /* footer text formatting */
 
@@ -331,17 +352,17 @@ footer a:hover {
 }
 
 .header-item:hover {
-    color: black;
+    color: #15616D;
 }
 
 .header-item-primary {
     font-size: 16px;
     font-weight: 900;
-    color: red;
+    color: #4a4e69;
 }
 
 .header-item-primary:hover {
-    color: red;
+    color: #9a8c98;
 }
 
 .navbar-toggler:hover {

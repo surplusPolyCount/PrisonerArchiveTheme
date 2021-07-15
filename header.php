@@ -62,7 +62,7 @@
                 <ul class="navbar-nav mr-auto">
                     <!-- featured -->
                     <li class="nav-item d-md-none">
-                        <a class="text-danger nav-link pl-4" href="/rogues/">Rogues Gallery</a>
+                        <a class="text-danger nav-link pl-4" href="/home/">Home</a>
                     </li>
                     <!-- dropdown -->
                     <li class="nav-item dropdown">
@@ -80,13 +80,10 @@
                         </button>
                         <!-- dropdown menu -->
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="text-danger dropdown-item d-none d-md-block" href="/rogues/">Rogues Gallery</a>
+                            <a class="text-danger dropdown-item d-none d-md-block" href="/home/">Home</a>
                             <div class="dropdown-divider d-none d-md-block"></div>
-                            <span class="dropdown-label dropdown-expanded d-none d-md-block" href="#">Issue Archive</span>
-                            <a class="dropdown-item pl-5" href="/issues/2019/">2019</a>
-                            <a class="dropdown-item pl-5" href="/issues/february-2020/">February</a>
-                            <a class="dropdown-item pl-5" href="/issues/march-2020/">March</a>
-                            <a class="dropdown-item pl-5" href="/issues/may-2020/">May (Covid-19 Zine)</a>
+                            <a class="dropdown-item pl-5" href="https://localhost/wordpress/?page_id=67">PenPals</a>
+                            <a class="dropdown-item pl-5" href="https://localhost/wordpress/?page_id=65">Contact Us</a>
                         </div>
                     </li>
                     <!-- mobile items -->
@@ -188,10 +185,9 @@
             </div>
             <div class="row w-extra mx-auto justify-content-sm-center font-weight-bold border-bottom nav-scroller">
                 <nav class="nav pl-5 py-2 text-uppercase align-items-center">
-                    <a class="header-item-primary px-2" role="button" href="/rogues/">Rogues Gallery</a>
-                    <a class="header-item px-2" role="button" href="/issues/issues/">Issue Archive</a>
-                    <a class="header-item px-2" role="button" href="/issues/april-2021/">April Issue</a>
-                    <a class="header-item px-2" role="button" href="/issues/may-2020/">From Emergency to Insurgency (May Zine)</a>
+                    <a class="header-item-primary px-2" role="button" href="/home/">Home</a>
+                    <a class="header-item px-2" role="button" href="https://localhost/wordpress/?page_id=67">PenPals</a>
+                    <a class="header-item px-2" role="button" href="https://localhost/wordpress/?page_id=65">Contact Us</a>
                 </nav>
             </div>
         </div>
