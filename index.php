@@ -29,7 +29,7 @@
     <?php $currentState = get_sub_address($post->ID)['state'];?> -->
 
 
-    <div class="card border-dark mb-3" style="width: 1200px;">
+    <div class="card border-dark mb-3" style="width: 1250px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <h5 class="card-title card-text-main text-center align-middle px-0 py-3"><?php the_title();?></h5>
