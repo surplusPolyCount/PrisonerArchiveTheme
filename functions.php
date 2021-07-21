@@ -473,6 +473,13 @@ function get_sub_address($desired_post_id){
 	return $address_dict; 
 }
 
+function not_empty($addr_dict){
+	foreach($addr_dict as $part){
+		if ($part != '') {return true;}
+	}
+	return false; 
+}
+
 //return url to pdf submitted with post as string
 function get_sub_pdflink($desired_post_id){
 	return get_post_meta($desired_post_id, 'wp_custom_attachment', true)['url'];
