@@ -1,3 +1,4 @@
+<!-- footer --> 
 
         </div> <!-- this needs to get moved into every pag.e -->
         <footer>
@@ -5,14 +6,11 @@
                 <div class="row justify-content-center pb-3 mb-3">
                     <div class="col-md-4 order-md-1 px-3">
                         <div class="pt-4">
-                        <div class="pt-1">
-                            <a href="/"><img id="logo" style="height: 37px; width: auto;" src="/images/mini.svg"></a>
-                        </div>
-                        <div class="pt-3">
-        		    <p class="text-white font-weight-light">
-        <strong>The Student Insurgent</strong> is a consensus organized journalistic endeavor based at the University of Oregon in Eugene. We are a radical publication that seeks to deconstruct the existing social order and facilitate its replacement with one which is ecologically sound and functions on egalitarian lines. We agitate and educate the student body by addressing issues which are often ignored or marginalized. We strive to be an open forum -- somewhere the silenced and oppressed can express their ideas and opinions free from the filters of the mainstream media. We exist to challenge oppression, exploitation and hierarchical power structures.
-                            </p>
-                        </div>
+                            <div class="pt-3">
+        		                <p class="text-white font-weight-light">
+                                    <strong>The Student Insurgent</strong> is a consensus organized journalistic endeavor based at the University of Oregon in Eugene. We are a radical publication that seeks to deconstruct the existing social order and facilitate its replacement with one which is ecologically sound and functions on egalitarian lines. We agitate and educate the student body by addressing issues which are often ignored or marginalized. We strive to be an open forum -- somewhere the silenced and oppressed can express their ideas and opinions free from the filters of the mainstream media. We exist to challenge oppression, exploitation and hierarchical power structures.
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md order-md-4 text-white pt-4">
@@ -33,10 +31,10 @@
                         </li>
                     </div>
                     <div class="col-md order-md-2 text-white pt-4">
-                        <?php wp_list_categories(); ?>
+                        
                     </div>
                     <div class="col-md order-md-3 text-white issues pt-4">
-                        <?php wp_list_categories(array('taxonomy'=>'issues', 'title_li' => '')); ?>
+                        
                     </div>
                     
                 </div>
@@ -50,3 +48,4 @@
         </footer>
     </body>
 </html>
+
