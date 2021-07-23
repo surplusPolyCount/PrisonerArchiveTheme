@@ -1,3 +1,4 @@
+<!--header-->
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> style="margin: 0 !important;">
     <head>
@@ -45,73 +46,13 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top border-bottom">
-            <!-- mobile hamburger -->
-            <button class="navbar-toggler btn btn-hamburger btn-light outline-none pl-1 pr-1 mr-1" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <div>
-                    <div class="hamburger"></div>
-                    <div class="hamburger"></div>
-                    <div class="hamburger"></div>
-                </div>
-            </button>
-            <!-- mobile logo -->
-            <a class="navbar-brand d-md-none" href="/"><img style="height: 37px; width: auto;" src="/images/mini2.svg"></a>
-
+        <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top shadow  border-bottom">
             <!-- collapsable items -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <!-- featured -->
-                    <li class="nav-item d-md-none">
-                        <a class="text-danger nav-link pl-4" href="/home/">Home</a>
-                    </li>
-                    <!-- dropdown -->
-                    <li class="nav-item dropdown">
-                        <!-- mobile dropdown toggler -->
-                        <a class="nav-link dropdown-toggle text-dark pl-4 d-md-none" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Issue Archive
-                        </a>
-                        <!-- desktop dropdown toggler -->
-                        <button class="btn btn-hamburger btn-light outline-none d-none d-md-inline pr-1 pl-1 mr-1" href="#" id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div>
-                                <div class="hamburger"></div>
-                                <div class="hamburger"></div>
-                                <div class="hamburger"></div>
-                            </div>
-                        </button>
-                        <!-- dropdown menu -->
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="text-danger dropdown-item d-none d-md-block" href="/home/">Home</a>
-                            <div class="dropdown-divider d-none d-md-block"></div>
-                            <a class="dropdown-item pl-5" href="https://localhost/wordpress/?page_id=67">PenPals</a>
-                            <a class="dropdown-item pl-5" href="https://localhost/wordpress/?page_id=65">Contact Us</a>
-                        </div>
-                    </li>
-                    <!-- mobile items -->
-                    <li class="nav-item d-md-none">
-                        <a class="text-dark nav-link pl-4 cursor-pointer" role="button" href="/calendar/">Calendar</a>
-                    </li> 
-                    <li class="nav-item d-md-none">
-                        <a class="text-dark nav-link pl-4 cursor-pointer" role="button" data-toggle="modal" data-target="#contact-us">Contact Us</a>
-                    </li>
-                    <!-- search -->
-                    <li class="nav-item">
-                        <form name="s" class="form-inline pl-2" role="search" method="get" action="/">
-                            <input class="form-control" id="s" type="text" name="s" placeholder="Search" aria-label="Search">
-                            <a name="s" class="btn-search" type="submit" href="#" onclick="document.forms['s'].submit(); return false;"><i class="fas fa-search"></i></a -->
-                        </form>
-                    </li>
-                </ul>
-
-                <!-- desktop logo -->
-                <a class="navbar-brand p-0 m-0 d-none d-md-inline outline-none" href="/"><img id="logo" style="display: none; height: 37px; width: auto;" src="/images/mini2.svg"></a>
-
+                <h2>Prisoner Archive</h2>
                 <!-- desktop buttons -->
                 <ul class="navbar-nav ml-auto d-none d-md-flex">
 			<!-- to center the logo --> <li style="width: 75px;"> </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light btn-head" href="/calendar/">Calendar</a>
-                    </li> 
-			
                     <li class="nav-item pl-3">
                         <button type="button" class="btn btn-light btn-head" data-toggle="modal" data-target="#contact-us">Contact Us</button>
                     </li>
@@ -180,13 +121,10 @@
 
         <!-- homepage header -->
         <div class="pt-3">
-            <div class="row mx-auto border-thick justify-content-center w-extra" id="headerimg">
-                <a href="/"><img style="width: 420px;" src="/images/banner.svg"></a>
-            </div>
-            <div class="row w-extra mx-auto justify-content-sm-center font-weight-bold border-bottom nav-scroller">
+            <div class="row w-extra mx-auto py-1 justify-content-sm-center font-weight-bold border-bottom nav-scroller">
                 <nav class="nav pl-5 py-2 text-uppercase align-items-center">
-                    <a class="header-item-primary px-2" role="button" href="/home/">Home</a>
                     <a class="header-item px-2" role="button" href="https://localhost/wordpress/?page_id=67">PenPals</a>
+                    <a class="header-item-primary px-2" role="button" href="/home/">Home</a>
                     <a class="header-item px-2" role="button" href="https://localhost/wordpress/?page_id=65">Contact Us</a>
                 </nav>
             </div>
